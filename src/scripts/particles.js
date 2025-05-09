@@ -2,8 +2,9 @@
 
 function getParticleCount() {
   const width = window.innerWidth;
-  if (width < 1024) return 60; // Tablet
-  return 100; // Desktop
+  if (width < 768) return 20; // Mobile
+  if (width < 1024) return 30; // Tablet
+  return 40; // Desktop
 }
 const particleCount = getParticleCount();
 const minSpeed = 10; // Minimum animation duration
@@ -19,9 +20,10 @@ function createParticle() {
   const particle = document.createElement("div");
   particle.className = "matrix-particle";
 
-  // Random position
-  particle.style.left = `${Math.random() * 100}vw`;
-  particle.style.top = `${Math.random() * 100}vh`;
+  // Random position within container
+  particle.style.position = "absolute";
+  particle.style.left = `${Math.random() * 100}%`;
+  particle.style.top = `${Math.random() * 100}%`;
 
   // Random size and animation duration
   const size = Math.random() * (maxSize - minSize) + minSize;
@@ -45,15 +47,11 @@ function createParticle() {
   return particle;
 }
 
-// Create particle container
-const particleContainer = document.createElement("div");
-particleContainer.style.position = "fixed";
-particleContainer.style.top = "0";
-particleContainer.style.left = "0";
-particleContainer.style.width = "100vw";
-particleContainer.style.height = "100vh";
+// Get existing particle container
+const particleContainer = document.getElementById("particles-js");
+particleContainer.style.position = "relative";
+particleContainer.style.overflow = "hidden";
 particleContainer.style.pointerEvents = "none";
-document.body.appendChild(particleContainer);
 
 // Create initial particles
 const responsiveCount = getParticleCount();
