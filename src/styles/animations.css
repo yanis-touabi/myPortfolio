@@ -1,0 +1,182 @@
+/* Floating Tech Particles */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes float-slow {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-15px, 10px);
+  }
+  50% {
+    transform: translate(10px, -15px);
+  }
+  75% {
+    transform: translate(15px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes float-fast {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20px, -10px);
+  }
+  50% {
+    transform: translate(-20px, 15px);
+  }
+  75% {
+    transform: translate(10px, 20px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.matrix-particle {
+  position: absolute;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  opacity: 0.8;
+  z-index: -1;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
+  animation: matrix-fall linear infinite;
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.light-trail {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 0, 0.8) 0%,
+    rgba(0, 255, 0, 0) 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.particle.glow-fast {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 20%,
+    transparent 70%
+  );
+  animation: float-fast 4s infinite ease-in-out, glow 2s infinite ease-in-out;
+  width: 10px;
+  height: 10px;
+}
+
+.particle.glow-still {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.7) 15%,
+    transparent 70%
+  );
+  animation: glow 5s infinite ease-in-out;
+  width: 20px;
+  height: 20px;
+}
+
+/* Gradient Mesh Background */
+.gradient-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(100, 255, 218, 0.1) 0%,
+    transparent 30%
+  );
+  z-index: -2;
+  animation: mesh-animation 20s infinite alternate;
+}
+
+@keyframes mesh-animation {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+/* Light Trail Effect */
+.light-trail {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(100, 255, 218, 0.3) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  z-index: -1;
+}
