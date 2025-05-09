@@ -312,6 +312,31 @@ function populateSkills(data) {
 }
 
 function init() {
+  // Theme toggle functionality
+  const themeToggle = document.querySelector(".theme-toggle");
+  const prefersLight = window.matchMedia(
+    "(prefers-color-scheme: light)"
+  ).matches;
+
+  // Set initial theme
+  if (
+    localStorage.getItem("theme") === "light" ||
+    (localStorage.getItem("theme") === null && prefersLight)
+  ) {
+    document.body.classList.add("light-mode");
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+
+  // Toggle theme on button click
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    const isLight = document.body.classList.contains("light-mode");
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+    themeToggle.innerHTML = isLight
+      ? '<i class="fas fa-moon"></i>'
+      : '<i class="fas fa-sun"></i>';
+  });
+
   // Language bars animation
   const observer = new IntersectionObserver(
     (entries) => {

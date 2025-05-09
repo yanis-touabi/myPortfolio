@@ -2,13 +2,105 @@
   --primary: #64ffda;
   --secondary: #0a192f;
   --accent: #ff6f00;
+  --bg-dark: #000000;
+  --bg-light: #f8f9fa;
+  --text-dark: white;
+  --text-light: #333;
+  --card-dark: rgb(20 22 25 / 65%);
+  --card-light: rgba(255, 255, 255, 0.9);
 }
 
 body {
-  /* background: linear-gradient(177deg, #0a192f, #172a45); */
-  background: #000000;
-  color: white;
+  background: var(--bg-dark);
+  color: var(--text-dark);
   min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.light-mode {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+body.light-mode .section-card {
+  background: var(--card-light);
+  color: var(--text-light);
+}
+
+body.light-mode h1,
+body.light-mode h2 {
+  color: var(--secondary);
+}
+
+body.light-mode .contact-info {
+  color: var(--secondary);
+}
+
+body.light-mode .social-links a {
+  color: var(--secondary);
+}
+
+body.light-mode .social-links a:hover {
+  color: var(--accent);
+}
+
+body.light-mode .skill-badge {
+  background: rgba(10, 25, 47, 0.1);
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+}
+
+body.light-mode .timeline-item {
+  border-left-color: var(--secondary);
+}
+
+body.light-mode .timeline-item::before {
+  background: var(--secondary);
+}
+
+body.light-mode .language-item {
+  background: rgba(10, 25, 47, 0.1);
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+}
+
+body.light-mode .language-item:hover {
+  background: rgba(10, 25, 47, 0.2);
+}
+
+body.light-mode .education-item {
+  border-left-color: rgba(10, 25, 47, 0.3);
+}
+
+body.light-mode .education-item h4 {
+  color: var(--secondary);
+}
+
+body.light-mode .education-item .duration,
+body.light-mode .education-item .institution {
+  color: #666;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--primary);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.theme-toggle i {
+  color: var(--secondary);
+  font-size: 1.2rem;
 }
 
 .profile-img {

@@ -6,8 +6,8 @@ function getParticleCount() {
   return 100; // Desktop
 }
 const particleCount = getParticleCount();
-const minSpeed = 5; // Minimum animation duration
-const maxSpeed = 20; // Maximum animation duration
+const minSpeed = 10; // Minimum animation duration
+const maxSpeed = 15; // Maximum animation duration
 const minSize = 12; // Minimum font size
 const maxSize = 24; // Maximum font size
 
