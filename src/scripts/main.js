@@ -64,7 +64,7 @@ const cvData = {
       position: "web developper",
       duration: "Sept 2023 - March 2025",
       description:
-        "I developed an educational trading platform featuring financial markets such as spot, mmk, and forward. The platform is designed to handle thousands of transactions seamlessly, offering a robust and scalable solution for users. Additionally, during my time at the company, I contributed to the creation of several websites and worked extensively with Node.js and NestJS, building high-performance APIs and scalable backend solutions.",
+        "I developed an educational trading platform covering markets like spot, MMK, and forward, designed to handle high transaction volumes efficiently. I also contributed to multiple website projects, building scalable and high-performance APIs using Node.js and NestJS.",
     },
     {
       company: "Fentech",
@@ -88,19 +88,73 @@ const cvData = {
         "I created a search platform for doctors and pharmacists, handling both the frontend and backend using HTML, CSS, JavaScript, jQuery, and PHP.",
     },
   ],
-  education: {
-    description:
-      "Self-taught developer with online platforms such as Udemy and Udacity.",
-    keyReadings: ["Clean Code", "Design Patterns"],
-  },
+  education: [
+    {
+      degree: "Master in Visual Computing",
+      duration: "Sep 2020 - Jul 2022",
+      institution: "USTHB, ALGER",
+      expertise: [
+        {
+          category: "General Computing and AI",
+          details:
+            "Advanced algorithms, complexity, databases, problem-solving, knowledge representation, and machine learning",
+        },
+        {
+          category: "Visual Computing",
+          details:
+            "Image and video analysis, data visualization, multimedia application development",
+        },
+      ],
+    },
+    {
+      degree:
+        "Bachelor's degree in Information Systems and Software Engineering",
+      duration: "Sep 2017 - Jul 2020",
+      institution: "USTHB, ALGER",
+      expertise: [
+        {
+          category: "Computer Science Foundations",
+          details:
+            "Strong foundation in computer science, software and hardware",
+        },
+        {
+          category: "Core Principles & Networks",
+          details:
+            "Solid understanding of core concepts and network technologies",
+        },
+        {
+          category: "Organizational Knowledge",
+          details:
+            "Proficient in organizational structures, management, and information systems",
+        },
+        {
+          category: "Information Systems Development",
+          details:
+            "Skilled in the complete development cycle using modern methodologies and database management",
+        },
+        {
+          category: "Software Development & Testing",
+          details:
+            "Competent in software development and thorough testing practices",
+        },
+      ],
+    },
+  ],
   skills: {
     technical: [
       "Full Stack Web Development (Mainly Backend)",
-      "mobile Development (Mainly Android)",
-      "desktop Development (Mainly Windows/Linux)",
-      "SQL/NoSQL Databases",
-      "Data Analysis",
+      "RESTful & GraphQL API Development",
+      "Desktop Development (Mainly Windows/Linux)",
+      "Mobile Development (Mainly Android)",
+      "SQL/NoSQL Databases (PostgreSQL, MySQL, MongoDB)",
+      "Distributed Systems & Microservices Architecture",
+      "Containerization & Deployment (Docker, VPS)",
+      "CI/CD & DevOps Basics",
       "Software Architecture & Design",
+      "Real-Time Data Handling (WebSockets, Pub/Sub)",
+      "Data Analysis & Processing",
+      "Authentication & Authorization (JWT, OAuth)",
+      "Version Control (Git & GitHub)",
     ],
   },
   languages: [
@@ -115,6 +169,10 @@ const cvData = {
     {
       name: "English",
       proficiency: "Proficient",
+    },
+    {
+      name: "Deutsch",
+      proficiency: "Intermediate (B1)",
     },
   ],
 };
@@ -153,19 +211,51 @@ function populateAbout(data) {
 
 function populateExperience(data) {
   const experienceSection = document.querySelectorAll(".section-card")[1];
+
+  // Separate company and freelance experiences
+  const companyExperiences = data.experience.filter(
+    (exp) => exp.company !== "Freelance"
+  );
+  const freelanceExperiences = data.experience.filter(
+    (exp) => exp.company === "Freelance"
+  );
+
   experienceSection.innerHTML = `
-    <h2><i class="fas fa-briefcase me-2"></i>Experience</h2>
-    ${data.experience
-      .map(
-        (exp) => `
-      <div class="timeline-item">
-        <h5>${exp.position} @ ${exp.company}</h5>
-        <small>${exp.duration}</small>
-        <p class="mt-2">${exp.description}</p>
-      </div>
-    `
-      )
-      .join("")}
+    <div class="experience-subsection">
+      <h2><i class="fas fa-building me-2"></i>Experience at Companies</h2>
+      ${companyExperiences
+        .map(
+          (exp) => `
+        <div class="timeline-item">
+          <h5>${exp.position} @ ${exp.company}</h5>
+          <small>${exp.duration}</small>
+          <div class="experience-details mt-2">
+            <h6>Experience at company:</h6>
+            <p>${exp.description}</p>
+          </div>
+        </div>
+      `
+        )
+        .join("")}
+    </div>
+
+    <div class="experience-subsection">
+      <h2><i class="fas fa-user-tie me-2"></i>Experience as a Freelancer</h2>
+      ${freelanceExperiences
+        .map(
+          (exp) => `
+        <div class="timeline-item">
+          <h5>${exp.position} @ ${exp.company}</h5>
+          <small>${exp.duration}</small>
+          <div class="experience-details mt-2">
+            <h6>Experience as freelancer:</h6>
+            <p>${exp.description}</p>
+          </div>
+        </div>
+      `
+        )
+        .join("")}
+    </div>
   `;
 }
 
@@ -173,12 +263,35 @@ function populateEducation(data) {
   const educationSection = document.querySelectorAll(".section-card")[2];
   educationSection.innerHTML = `
     <h2><i class="fas fa-graduation-cap me-2"></i>Education</h2>
-    <p>${data.education.description}</p>
-    <p>
-      <i class="fas fa-book me-2"></i>Key Readings: ${data.education.keyReadings.join(
-        ", "
-      )}
-    </p>
+    ${data.education
+      .map(
+        (edu) => `
+      <div class="education-item">
+        <h3>${edu.degree}</h3>
+        <p class="duration">${edu.duration}</p>
+        ${edu.expertise
+          .map(
+            (exp) => `
+          <h4>${exp.category}:</h4>
+          <ul>
+            ${exp.details
+              .split(". ")
+              .filter((d) => d)
+              .map(
+                (detail) => `
+              <li>${detail.trim()}${!detail.endsWith(".") ? "." : ""}</li>
+            `
+              )
+              .join("")}
+          </ul>
+        `
+          )
+          .join("")}
+        <p class="institution">${edu.institution}</p>
+      </div>
+    `
+      )
+      .join("")}
   `;
 }
 
@@ -390,12 +503,12 @@ function generateCV(cvData) {
   <header>
       <h1 style="margin: 0; font-size: 1.8rem;">${
         cvData.profile.name
-      } - Tech Lead</h1>
+      } - Software Engineer</h1>
   </header>
 
   <!-- Footer that will appear on every printed page -->
   <footer>
-      <span>Contact: ${cvData.profile.email || "rafafaycal@gmail.com"}</span>
+      <span>Contact: ${cvData.profile.email || "yanis.touabi@gmail.com"}</span>
       <span style="margin-left: 1rem;">&copy; ${new Date().getFullYear()} ${
     cvData.profile.name
   }</span>
@@ -464,14 +577,27 @@ function generateCV(cvData) {
 
             <h2>Education</h2>
             <div class="education">
-                <div class="description">
-                    ${cvData.education.description}
+              ${cvData.education
+                .map(
+                  (edu) => `
+                <div class="education-item">
+                  <h3>${edu.degree}</h3>
+                  <div class="duration">${edu.duration}</div>
+                  ${edu.expertise
+                    .map(
+                      (exp) => `
+                    <div class="expertise">
+                      <h4>${exp.category}</h4>
+                      <p>${exp.details}</p>
+                    </div>
+                  `
+                    )
+                    .join("")}
+                  <div class="institution">${edu.institution}</div>
                 </div>
-                <div style="margin-top: 1rem;">
-                    <strong>Key Readings:</strong> ${cvData.education.keyReadings.join(
-                      ", "
-                    )}
-                </div>
+              `
+                )
+                .join("")}
             </div>
 
             <h2>Technical Expertise</h2>
