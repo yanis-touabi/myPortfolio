@@ -939,16 +939,32 @@ function generateCV(cvData) {
 </body>
 </html>`;
 
-  // Open in new window and print
-  const printWindow = window.open("", "_blank");
-  printWindow.document.write(htmlContent);
-  printWindow.document.close();
-  printWindow.addEventListener("load", function () {
+  // Check screen size
+  if (window.innerWidth < 768) {
+    // Mobile devices
+    const cvUrl =
+      currentLanguage === "en"
+        ? "https://drive.google.com/file/d/1r2q5j7NggiPFTzrxHWuM1MOosnbMGhmQ/view?usp=sharing"
+        : "https://drive.google.com/file/d/1qoUc_qk9bUWkVNTjmGtG3berUa2DxTlm/view?usp=sharing";
+    window.open(cvUrl, "_blank");
+  } else {
+    // Create a Blob with the HTML content
+    const blob = new Blob([htmlContent], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+
+    // Create a temporary link to trigger download
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${cvData.profile.name.replace(" ", "_")}_CV.html`;
+    document.body.appendChild(a);
+    a.click();
+
+    // Clean up
     setTimeout(() => {
-      printWindow.focus();
-      printWindow.print();
-    }, 1000);
-  });
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+  }
 }
 
 init();
