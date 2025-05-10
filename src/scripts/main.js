@@ -352,8 +352,9 @@ const cvData = {
   },
 };
 
-function loadCVData() {
-  return cvData;
+function loadCVData(currentLanguage) {
+  if (currentLanguage === "en") return cvData.en;
+  return cvData.de;
 }
 
 function populateProfile(data) {
@@ -656,7 +657,7 @@ function init() {
   });
 
   document.addEventListener("DOMContentLoaded", () => {
-    const data = loadCVData();
+    const data = loadCVData(currentLanguage);
     populateProfile(data);
     populateAbout(data);
     populateExperience(data);
@@ -664,20 +665,20 @@ function init() {
     populateSkills(data);
 
     document.querySelector(".download-cv-btn").addEventListener("click", () => {
-      const data = loadCVData();
+      const data = loadCVData(currentLanguage);
       generateCV(data);
     });
   });
 }
 
-function generateCV(data) {
+function generateCV(cvData) {
   const htmlContent = `
   <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${data.profile.name} - Backend Developer</title>
+  <title>${cvData.profile.name} - Backend Developer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
       /* Set the printed page to A4 size with no default margin */
@@ -828,15 +829,15 @@ function generateCV(data) {
   <!-- Header that will appear on every printed page -->
   <header>
       <h1 style="margin: 0; font-size: 1.8rem;">${
-        data.profile.name
+        cvData.profile.name
       } - Software Engineer</h1>
   </header>
 
   <!-- Footer that will appear on every printed page -->
   <footer>
-      <span>Contact: ${data.profile.email || "yanis.touabi@gmail.com"}</span>
+      <span>Contact: ${cvData.profile.email || "yanis.touabi@gmail.com"}</span>
       <span style="margin-left: 1rem;">&copy; ${new Date().getFullYear()} ${
-    data.profile.name
+    cvData.profile.name
   }</span>
   </footer>
 
@@ -844,10 +845,10 @@ function generateCV(data) {
   <div class="page-content">
     <div class="container">
         <div class="sidebar">
-            <h1>${data.profile.name}</h1>
+            <h1>${cvData.profile.name}</h1>
             
             <div class="social-links">
-                ${data.profile.socialLinks
+                ${cvData.profile.socialLinks
                   .map(
                     (link) =>
                       `
@@ -863,14 +864,14 @@ function generateCV(data) {
 
             <h2>Skills</h2>
             <ul class="skills">
-                ${data.about.skills
+                ${cvData.about.skills
                   .map((skill) => `<li>${skill}</li>`)
                   .join("")}
             </ul>
 
             <h2>Languages</h2>
             <ul class="languages">
-                ${data.languages
+                ${cvData.languages
                   .map(
                     (lang) => `
                     <li class="language">
@@ -885,7 +886,7 @@ function generateCV(data) {
         <div class="main-content">
             <h2>Professional Experience</h2>
             <div class="experience">
-            ${data.experience
+            ${cvData.experience
               .map(
                 (exp, index) => `
               ${(index + 1) % 5 === 0 ? '<div style="height: 7cm;"></div>' : ""}
@@ -903,7 +904,7 @@ function generateCV(data) {
 
             <h2>Education</h2>
             <div class="education">
-              ${data.education
+              ${cvData.education
                 .map(
                   (edu) => `
                 <div class="education-item">
@@ -928,7 +929,7 @@ function generateCV(data) {
 
             <h2>Technical Expertise</h2>
             <ul class="tech-skills">
-                ${data.skills.technical
+                ${cvData.skills.technical
                   .map((skill) => `<li>${skill}</li>`)
                   .join("")}
             </ul>
