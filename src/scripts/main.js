@@ -10,7 +10,7 @@ const cvData = {
         },
         {
           icon: "fab fa-github",
-          url: "https://github.com/the-king-of-pirate",
+          url: "https://github.com/yanis-touabi/",
           name: "/yanistouabi",
         },
         {
@@ -365,7 +365,9 @@ function populateProfile(data) {
   socialLinks.innerHTML = data.profile.socialLinks
     .map(
       (link) => `
-    <a href="${link.url}" target="_blank"><i class="${link.icon}"></i></a>
+    <a href="${link.url}" target="_blank">
+      <i class="${link.icon}"></i>
+    </a>
   `
     )
     .join("");

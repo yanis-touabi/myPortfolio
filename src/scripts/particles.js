@@ -51,7 +51,7 @@ function createParticle() {
 const particleContainer = document.getElementById("particles-js");
 particleContainer.style.position = "relative";
 particleContainer.style.overflow = "hidden";
-particleContainer.style.pointerEvents = "none";
+// Removed pointer-events: none to allow clicking on social links
 
 // Create initial particles
 const responsiveCount = getParticleCount();

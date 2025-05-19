@@ -197,9 +197,15 @@ body.light-mode .education-item .institution {
   margin-bottom: 2rem;
   font-weight: bold;
 }
+.social-links a {
+  display: inline-block;
+  transition: transform 0.3s, color 0.3s;
+}
+
 .social-links a:hover {
   transform: translateY(-3px);
-  color: white;
+  color: white !important;
+  text-decoration: none;
 }
 
 .section-card {
