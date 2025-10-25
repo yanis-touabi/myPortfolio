@@ -32,16 +32,16 @@ const cvData = {
     },
     about: {
       description:
-        "Web developer with 2+ years of experience developing different backend and full-stack solutions in short periods of time. Extensive experience in developing projects from architecture to launch. I enjoy challenges and adapt quickly to different environments, always ready to explore new technologies. With strong motivation and a curious mindset, I strive to bring fresh ideas and deliver solutions that make a difference. ",
+        "Web developer with +3 years of experience developing different backend and full-stack solutions in short periods of time. Extensive experience in developing projects from architecture to launch. I enjoy challenges and adapt quickly to different environments, always ready to explore new technologies. With strong motivation and a curious mindset, I strive to bring fresh ideas and deliver solutions that make a difference.",
       skills: [
         "JavaScript",
         "TypeScript",
         "Node.js",
-        "jQuery",
+        "NestJS",
         "React.js",
         "Next.js",
         "PHP",
-        "NestJS",
+        "jQuery",
         "Docker",
         "Redis",
         "JWT",
@@ -58,6 +58,13 @@ const cvData = {
       ],
     },
     experience: [
+      {
+        company: "Intaj Mohtawayat",
+        position: "Fullstack developper",
+        duration: "Sept 2025 - Now",
+        description:
+          "Currently working as a Fullstack Developer on a social media platform, where I’m developing a scalable and secure backend using NestJS. I’m also designing the database architecture, configuring servers, and managing Docker deployments to ensure high performance and reliability.",
+      },
       {
         company: "Sarl Finnetude",
         position: "web developper",
@@ -216,16 +223,16 @@ const cvData = {
         "jQuery",
         "React.js",
         "Next.js",
-        "PHP",
-        "NestJS",
         "Docker",
         "Redis",
+        "Git",
+        "PHP",
+        "NestJS",
         "JWT",
         "SQL/NoSQL",
         "Nginx",
         "Traefik",
         "Tailwind CSS",
-        "Git",
         "WebSocket",
         "Bash/shell",
         "Powershell",
