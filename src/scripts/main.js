@@ -59,11 +59,18 @@ const cvData = {
     },
     experience: [
       {
+        company: "HCN (High Commmission for Digitalisation)",
+        position: "Fullstack developper",
+        duration: "Nov 2025 - Now",
+        description:
+          "Currently working on a large-scale document and courier management system. I develop secure backend services, build robust and scalable APIs with clean architecture, and ensure reliable and efficient data processes.",
+      },
+      {
         company: "Intaj Mohtawayat",
         position: "Fullstack developper",
-        duration: "Sept 2025 - Now",
+        duration: "Sept 2025 - Nov 2025",
         description:
-          "Currently working as a Fullstack Developer on a social media platform, where I’m developing a scalable and secure backend using NestJS. I’m also designing the database architecture, configuring servers, and managing Docker deployments to ensure high performance and reliability.",
+          "Worked as a Fullstack Developer on a social media platform, where I developed a scalable and secure backend using NestJS. I also designed the database architecture, configured servers, and managed Docker deployments to ensure high performance and reliability.",
       },
       {
         company: "Sarl Finnetude",
@@ -215,7 +222,7 @@ const cvData = {
     },
     about: {
       description:
-        "Webentwickler mit mehr als 2 Jahren Erfahrung in der Entwicklung verschiedener Backend- und Full-Stack-Lösungen in kurzen Zeiträumen. Umfangreiche Erfahrung in der Entwicklung von Projekten von der Architektur bis zum Launch. Ich mag Herausforderungen und passe mich schnell an verschiedene Umgebungen an, immer bereit, neue Technologien zu erkunden. Mit starker Motivation und einer neugierigen Denkweise strebe ich danach, frische Ideen einzubringen und Lösungen zu liefern, die einen Unterschied machen.",
+        "Webentwickler mit mehr als 3 Jahren Erfahrung in der Entwicklung verschiedener Backend- und Full-Stack-Lösungen in kurzen Zeiträumen. Umfangreiche Erfahrung in der Entwicklung von Projekten von der Architektur bis zum Launch. Ich mag Herausforderungen und passe mich schnell an verschiedene Umgebungen an, immer bereit, neue Technologien zu erkunden. Mit starker Motivation und einer neugierigen Denkweise strebe ich danach, frische Ideen einzubringen und Lösungen zu liefern, die einen Unterschied machen.",
       skills: [
         "JavaScript",
         "TypeScript",
@@ -241,6 +248,20 @@ const cvData = {
       ],
     },
     experience: [
+      {
+        company: "HCN (High Commission for Digitalisation)",
+        position: "Fullstack Entwickler",
+        duration: "Nov 2025 – Heute",
+        description:
+          "Derzeit arbeite ich an einem groß angelegten Dokumenten- und Kuriermanagementsystem. Ich entwickle sichere Backend-Services, baue robuste und skalierbare APIs mit sauberer Architektur und stelle zuverlässige sowie effiziente Datenprozesse sicher.",
+      },
+      {
+        company: "Intaj Mohtawayat",
+        position: "Fullstack Entwickler",
+        duration: "Sept 2025 – Nov 2025",
+        description:
+          "Ich arbeitete als Fullstack Entwickler an einer Social-Media-Plattform, bei der ich ein skalierbares und sicheres Backend mit NestJS entwickelte. Außerdem entwarf ich die Datenbankarchitektur, konfigurierte Server und verwaltete Docker-Deployments, um hohe Performance und Zuverlässigkeit sicherzustellen.",
+      },
       {
         company: "Sarl Finnetude",
         position: "Webentwickler",
