@@ -374,7 +374,7 @@ const cvData = {
       },
       {
         name: "Deutsch",
-        proficiency: "Mittelstufe (B1)",
+        proficiency: "Mittelstufe (B2)",
       },
     ],
   },
